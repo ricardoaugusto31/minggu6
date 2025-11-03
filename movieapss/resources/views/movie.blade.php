@@ -16,14 +16,16 @@
           </tr>
         </thead>
         <tbody>
+          @foreach($mv as $idx => $m)
           <tr>
-            <td>1</td>
-            <td>tt29381</td>
-            <td>Abadi Nan Jaya</td>
-            <td>Horor</td>
-            <td>2025</td>
-            <td>image.jpg</td>
+            <td>{{ $idx + 1  }}</td>
+            <td>{{ $m -> imdb }}</td>
+            <td>{{ $m -> title }}</td>
+            <td>{{ $m -> genre }}</td>
+            <td>{{ $m -> year }}</td>
+            <td>{{ $m -> poster }}</td>
           </tr>
+          @endforeach
         </tbody>
       </table>
     </div>
