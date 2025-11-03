@@ -4,7 +4,7 @@
   <div class="card">
     <div class="card-header"></div>
     <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="/movie/save" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="imdb">Imdb</label>

@@ -25,7 +25,13 @@
             <td>{{ $m -> title }}</td>
             <td>{{ $m -> genre }}</td>
             <td>{{ $m -> year }}</td>
-            <td>{{ $m -> poster }}</td>
+            <td>
+              @if ($m -> poster)
+                <img src="{{ asset('/storage/poster/'.$m->poster)}}" alt="$m->poster" width="80" height="80">
+              @else
+                <img src="{{ asset('/storage/poster/no-image.jpg')}}" alt="No Image" width="80" height="80">
+              @endif
+            </td>
           </tr>
           @endforeach
         </tbody>

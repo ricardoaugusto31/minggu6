@@ -13,7 +13,7 @@ class PageController extends Controller
     }
     public function movie()
     {
-        $movie = Movie::all();
+        $movie = Movie::orderBy('id', 'desc')->get();
         return view('movie', ['key' => 'movie', 'mv' => $movie]);
     }
 
@@ -21,6 +21,29 @@ class PageController extends Controller
     {
         return view('movieaddform', ['key' => 'movie']);
     }
+
+    public function moviesave(Request $request)
+    {
+        if($request->hasFile('poster'))
+        {
+            $file_name = time().'-'.$request->file('poster')->getClientOriginalName();
+            $path = $request->file('poster')->storeAs('poster', $file_name,'public');
+        } else
+        {
+            $file_name = null;
+            $path = null;
+        }
+        Movie::create([
+            'imdb' => $request->imdb,
+            'title' => $request->title,
+            'genre' => $request->genre,
+            'year' => $request->year,
+            'description' => $request->description,
+            'poster' => $file_name
+        ]);
+        return redirect('/movie');
+    }
+
     public function genre()
     {
         return view('genre', ['key' => 'genre']);
