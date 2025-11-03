@@ -16,6 +16,11 @@ class PageController extends Controller
         $movie = Movie::all();
         return view('movie', ['key' => 'movie', 'mv' => $movie]);
     }
+
+    public function movieaddform()
+    {
+        return view('movieaddform', ['key' => 'movie']);
+    }
     public function genre()
     {
         return view('genre', ['key' => 'genre']);

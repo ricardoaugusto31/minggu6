@@ -2,7 +2,9 @@
 @section('title', 'Movie')
 @section('content')
   <div class="card">
-    <div class="card-header"></div>
+    <div class="card-header">
+      <a href="/movie/addform" class="btn btn-primary" ><i class="bi bi-plus-square"></i></a>
+    </div>
     <div class="card-body">
       <table id="example" class="display" style="width: 100%;">
         <thead>
