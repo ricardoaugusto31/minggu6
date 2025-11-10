@@ -15,6 +15,7 @@
             <th>Genre</th>
             <th>Year</th>
             <th>Poster</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +32,9 @@
               @else
                 <img src="{{ asset('/storage/poster/no-image.jpg')}}" alt="No Image" width="80" height="80">
               @endif
+            </td>
+            <td>
+              <a href="/movie/editform/{{ $m->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
             </td>
           </tr>
           @endforeach

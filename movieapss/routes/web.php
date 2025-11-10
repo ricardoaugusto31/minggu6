@@ -18,6 +18,8 @@
 Route::get('/', "PageController@home");
 Route::get('/movie', "PageController@movie");
 Route::get('/movie/addform', "PageController@movieaddform");
+Route::get('/movie/editform/{id}', "PageController@movieeditform");
+Route::put('/movie/update/{id}', "PageController@movieupdate");
 Route::post('/movie/save', "PageController@moviesave");
 Route::get('/genre', "PageController@genre");
 
