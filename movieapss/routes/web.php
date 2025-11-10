@@ -21,6 +21,7 @@ Route::get('/movie/addform', "PageController@movieaddform");
 Route::get('/movie/editform/{id}', "PageController@movieeditform");
 Route::put('/movie/update/{id}', "PageController@movieupdate");
 Route::post('/movie/save', "PageController@moviesave");
+Route::get('/movie/delete/{id}', "PageController@moviedelete");
 Route::get('/genre', "PageController@genre");
 
 

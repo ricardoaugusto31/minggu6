@@ -73,6 +73,17 @@ class PageController extends Controller
             return redirect('/movie');
     }
 
+    public function moviedelete($id)
+    {
+        $movie = Movie::find($id);
+        if ($movie->poster)
+            {
+                Storage::disk('public')->delete('poster/'.$movie->poster);
+            }
+        $movie->delete();
+        return redirect('/movie');
+    }
+
     public function genre()
     {
         return view('genre', ['key' => 'genre']);

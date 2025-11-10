@@ -35,6 +35,7 @@
             </td>
             <td>
               <a href="/movie/editform/{{ $m->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+              <a href="/movie/delete/{{ $m->id }}" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
             </td>
           </tr>
           @endforeach
