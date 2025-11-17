@@ -1,9 +1,9 @@
 @extends('layouts.main')
-@section('title', 'Movie')
+@section('title', 'Users')
 @section('content')
   <div class="card">
     <div class="card-header">
-      <a href="/movie/addform" class="btn btn-primary" ><i class="bi bi-plus-square"></i></a>
+      <a href="/users/addform" class="btn btn-primary" ><i class="bi bi-plus-square"></i></a>
     </div>
     <div class="card-body">
       <!-- POP UP -->
@@ -19,32 +19,27 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Imdb Id</th>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Year</th>
-            <th>Poster</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Photo</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($mv as $idx => $m)
+          @foreach($users as $idx => $u)
           <tr>
             <td>{{ $idx + 1  }}</td>
-            <td>{{ $m -> imdb }}</td>
-            <td>{{ $m -> title }}</td>
-            <td>{{ $m -> genre }}</td>
-            <td>{{ $m -> year }}</td>
+            <td>{{ $u -> name }}</td>
+            <td>{{ $u -> email }}</td>
             <td>
-              @if ($m -> poster)
-                <img src="{{ asset('/storage/poster/'.$m->poster)}}" alt="$m->poster" width="80" height="80">
+              @if ($u -> photo)
+                <img src="{{ asset('/storage/photo/'.$u->photo)}}" alt="$u->photo" width="80" height="80">
               @else
-                <img src="{{ asset('/storage/poster/no-image.jpg')}}" alt="No Image" width="80" height="80">
+                <img src="{{ asset('/storage/photo/no-image.jpg')}}" alt="No Image" width="80" height="80">
               @endif
             </td>
             <td>
-              <a href="/movie/editform/{{ $m->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-              <a href="/movie/delete/{{ $m->id }}" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
+              <a href="/users/delete/{{ $u->id }}" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
             </td>
           </tr>
           @endforeach

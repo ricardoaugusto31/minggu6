@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 //1
-Route::get('/', "PageController@home");
+Route::get('/home', "PageController@home");
 Route::get('/movie', "PageController@movie");
 Route::get('/movie/addform', "PageController@movieaddform");
 Route::get('/movie/editform/{id}', "PageController@movieeditform");
@@ -23,6 +23,11 @@ Route::put('/movie/update/{id}', "PageController@movieupdate");
 Route::post('/movie/save', "PageController@moviesave");
 Route::get('/movie/delete/{id}', "PageController@moviedelete");
 Route::get('/genre', "PageController@genre");
+Route::get('/users', "PageController@users");
+Route::get('/users/addform', "PageController@usersaddform"); 
+Route::post('/users/save', "PageController@userssave");
+Route::get('/', "AuthController@login");
+
 
 
 

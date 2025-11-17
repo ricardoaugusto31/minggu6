@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="poster">Poster</label>  
-                <input type="file" name="poster" id="poster" accept="image/" class="form-control" required>
+                <input type="file" name="poster" id="poster" accept="image/" class="form-control">
             </div>
             <div class="form-group">
                 @if ($mv -> poster)

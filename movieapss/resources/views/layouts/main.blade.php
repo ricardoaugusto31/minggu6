@@ -42,9 +42,10 @@
          <div class="row">
             <div class="col-md-2 border vh-100">
               <div class="nav flex-column nav-pills mt-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link {{ ($key == 'home') ? 'active':'' }}" href="/" role="tab">Home</a>
+                <a class="nav-link {{ ($key == 'home') ? 'active':'' }}" href="/home" role="tab">Home</a>
                 <a class="nav-link {{ ($key == 'movie') ? 'active':'' }}" href="/movie" role="tab">Movie</a>
                 <a class="nav-link {{ ($key == 'genre') ? 'active':'' }}" href="/genre" role="tab">Genre</a>
+                <a class="nav-link {{ ($key == 'users') ? 'active':'' }}" href="/users" role="tab">Users</a>
                 <a class="nav-link" href="https://www.netflix.com/id-en/" role="tab">Bioskop</a>
               </div>
             </div>

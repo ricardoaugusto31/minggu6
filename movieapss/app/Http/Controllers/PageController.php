@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use Illuminate\Http\Request;
 use App\Movie;
 use Illuminate\Support\Facades\Storage;
+use App\User;
 
 class PageController extends Controller
 {
@@ -42,7 +44,7 @@ class PageController extends Controller
             'description' => $request->description,
             'poster' => $file_name
         ]);
-        return redirect('/movie');
+        return redirect('/movie')->with('alert', 'Data berhasil ditambahkan!');
     }
 
     public function movieeditform($id)
@@ -70,7 +72,7 @@ class PageController extends Controller
                 $movie->poster = $file_name;
             }
             $movie->save();
-            return redirect('/movie');
+            return redirect('/movie')->with('alert', 'Data berhasil diupdate!');
     }
 
     public function moviedelete($id)
@@ -81,11 +83,43 @@ class PageController extends Controller
                 Storage::disk('public')->delete('poster/'.$movie->poster);
             }
         $movie->delete();
-        return redirect('/movie');
+        return redirect('/movie')->with('alert', 'Data berhasil dihapus!');
     }
 
     public function genre()
     {
         return view('genre', ['key' => 'genre']);
     }
+
+    public function users()
+    {
+        $users = User::orderBy('id', 'desc')->get();
+        return view('users', ['key' => 'users', 'users' => $users]);
+    }
+
+    public function usersaddform()
+    {
+        return view('usersaddform', ['key' => 'users']);
+    }
+
+    public function userssave(Request $request)
+    {
+        if($request->hasFile('photo'))
+        {
+            $file_name = time().'-'.$request->file('photo')->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('photo', $file_name,'public');
+        } else
+        {
+            $file_name = null;
+            $path = null;
+        }
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'photo' => $file_name
+        ]);
+        return redirect('/users')->with('alert', 'Data berhasil ditambahkan!');
+    }
 }
+
