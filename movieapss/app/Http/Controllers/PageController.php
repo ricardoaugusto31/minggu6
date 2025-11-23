@@ -121,5 +121,16 @@ class PageController extends Controller
         ]);
         return redirect('/users')->with('alert', 'Data berhasil ditambahkan!');
     }
+
+    public function usersdelete($id)
+    {
+        $user = User::find($id);
+        if ($user->photo) {
+            Storage::disk('public')->delete('photo/'.$user->photo);
+        }
+        $user->delete();
+        return redirect('/users')->with('alert', 'Data berhasil dihapus!');
+    }
+
 }
 
