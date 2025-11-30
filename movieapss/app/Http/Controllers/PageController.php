@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Movie;
 use Illuminate\Support\Facades\Storage;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -130,6 +131,27 @@ class PageController extends Controller
         }
         $user->delete();
         return redirect('/users')->with('alert', 'Data berhasil dihapus!');
+    }
+
+    public function setting()
+    {
+        return view('setting', ['key' => 'users']);
+    }
+
+    public function updatepass(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!Auth::attempt([
+            'email' => $user->email,
+            'password' => $request->password_lama
+        ])) {
+            return redirect('/setting');
+        }
+
+        $user->update([
+            'password' => bcrypt($request->password_baru),
+        ]);
     }
 
 }

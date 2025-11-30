@@ -24,16 +24,16 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="#">
                     <div class="media">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsVllhuihxEE1PsOUjQ_qS6VsgoC6rCOeTYg&s"
+                      <img src="{{ Auth::user()->photo?asset('/storage/photo/'.Auth::user()->photo):asset('/storage/photo/no-image.png') }}"
                       width="50" height="50" class="align-self-center mr-3" alt="...">
                       <div class="media-body">
-                        <h5 class="mt-0">Lil Bah</h5>
+                        <h5 class="mt-0">{{ Auth::user()->name }}</h5>
                         <small><p class="mb-0"><i class="bi bi-clock"></i> PKL 17:00 WIB</p></small>
                       </div>
                     </div>
                   </a>
                   <a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Setting</a>
-                  <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Logout</a>
+                  <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
                 </div>
               </div>
             </div>
